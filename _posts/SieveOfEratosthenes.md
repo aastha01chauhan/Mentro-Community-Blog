@@ -16,7 +16,7 @@ tags:
 
 
 ## Introduction
-t is easy to find if some number (say N) is prime or not — you simply need to check if at least one number from numbers lower or equal sqrt(n) is divisor of N. This can be achieved by simple code:
+It is easy to find if some number (say N) is prime or not — you simply need to check if at least one number from numbers lower or equal sqrt(n) is divisor of N. This can be achieved by simple code:
 
 boolean isPrime( int n ) {
     if ( n == 1 ) return false; // by definition, 1 is not prime number
@@ -27,23 +27,24 @@ boolean isPrime( int n ) {
 }
 So it takes sqrt(n) steps to check this. Of course you do not need to check all even numbers, so it can be "optimized" a bit:
 
-boolean isPrime( int n ) {
+```boolean isPrime( int n ) {
     if ( n == 1 ) return false; // by definition, 1 is not prime number
     if ( n == 2 ) return true; // the only one even prime
     if ( n%2 == 0 ) return false; // check if is even
     for ( int i = 3; i * i <= n; i += 2 ) // for each odd number
         if ( n%i == 0 ) return false;
     return true;
-}
+}```
 So let say that it takes 0,5*sqrt(n) steps. That means it takes 500.000.000 steps to check that 1.000.000.007 is a prime.
 
 But there is great idea — why to "do not check even numbers". This idea can be extended to: "do not divide N by candidate numbers, but mark the prime multiples as 'not prime'".
 
-In other words: if we know about some number p, taht it is prime, we mark all multiples (2*p, 3*p, 4*p, ...) as not a prime. To implement this we need limit (max number we care about), let say it is 120 (because there is nice animation of algorithm on wikipedia).
+In other words: if we know about some number p, that it is prime, we mark all multiples (2*p, 3*p, 4*p, ...) as not a prime. To implement this we need limit (max number we care about), let say it is 120 
 
 In Java I'm using this code:
+     
 
-    private static final boolean[] isPrime = new boolean[121];
+   ```private static final boolean[] isPrime = new boolean[121];
     static {
         Arrays.fill( isPrime, true ); // first we assume all numbers are primes if not shown otherwise
         isPrime[ 0 ] = false; // zero is not prime - it'is not greater than 1
@@ -55,12 +56,13 @@ In Java I'm using this code:
                 }
             }
         }
-    }
+    } ```
+    
 Now, you can answer the question "is n prime" in constant time. Of course problems like this one are so simple, that you won't see it as problems, but it is subproblem of some more diffucult problem often.
 
 You can memorize the primes too. And while it holds that even number multiply by whatever is even (and there is just one even prime number), you can skip all even m:
 
-    private static final int LIMIT = 121;
+    ```private static final int LIMIT = 121;
     private static final boolean[] isPrime = new boolean[LIMIT + 1];
     private static ArrayList<Integer> primes = new ArrayList<Integer>();
     static {
@@ -80,11 +82,11 @@ You can memorize the primes too. And while it holds that even number multiply by
                 }
             }
         }
-    }
+    }```
 
 
-## Pseudo-Code for Selection Sort
-private static final boolean[] isPrime = new boolean[121];
+## Pseudo-Code for Sieve of Eratosthenes
+```private static final boolean[] isPrime = new boolean[121];
     static {
         Arrays.fill( isPrime, true ); // first we assume all numbers are primes if not shown otherwise
         isPrime[ 0 ] = false; // zero is not prime - it'is not greater than 1
@@ -96,13 +98,14 @@ private static final boolean[] isPrime = new boolean[121];
                 }
             }
         }
-    }
+    }```
+    
 Now, you can answer the question "is n prime" in constant time. Of course problems like this one are so simple, that you won't see it as problems, but it is subproblem of some more diffucult problem often.
 
 You can memorize the primes too. And while it holds that even number multiply by whatever is even (and there is just one even prime number), you can skip all even m:
 
 ## Implementation of Sieve of Eratosthenes in Java
- private static final int LIMIT = 121;
+ ```private static final int LIMIT = 121;
     private static final boolean[] isPrime = new boolean[LIMIT + 1];
     private static ArrayList<Integer> primes = new ArrayList<Integer>();
     static {
@@ -122,7 +125,7 @@ You can memorize the primes too. And while it holds that even number multiply by
                 }
             }
         }
-    }
+    }```
 
 
 Maybe you would like to have primes in array instead of List — you can use toArray(int []) method or you find out how many prime numbers (lower than limit) there are. 
