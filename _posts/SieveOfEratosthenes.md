@@ -35,7 +35,7 @@ So it takes sqrt(n) steps to check this. Of course you do not need to check all 
         if ( n%i == 0 ) return false;
     return true;
 }```
-So let say that it takes 0,5*sqrt(n) steps. That means it takes 500.000.000 steps to check that 1.000.000.007 is a prime.
+So, let us say that it takes 0,5*sqrt(n) steps. That means it takes 500.000.000 steps to check that 1.000.000.007 is a prime.
 
 But there is great idea — why to "do not check even numbers". This idea can be extended to: "do not divide N by candidate numbers, but mark the prime multiples as 'not prime'".
 
@@ -58,7 +58,7 @@ In Java I'm using this code:
         }
     } ```
     
-Now, you can answer the question "is n prime" in constant time. Of course problems like this one are so simple, that you won't see it as problems, but it is subproblem of some more diffucult problem often.
+Now, you can answer the question "is n prime" in constant time. Of course problems like this one are so simple, that you won't see it as problems, but it is subproblem of some more difficult problem often.
 
 You can memorize the primes too. And while it holds that even number multiply by whatever is even (and there is just one even prime number), you can skip all even m:
 
@@ -102,7 +102,7 @@ You can memorize the primes too. And while it holds that even number multiply by
     
 Now, you can answer the question "is n prime" in constant time. Of course problems like this one are so simple, that you won't see it as problems, but it is subproblem of some more diffucult problem often.
 
-You can memorize the primes too. And while it holds that even number multiply by whatever is even (and there is just one even prime number), you can skip all even m:
+You can memorise the primes too. And while it holds that even number multiply by whatever is even (and there is just one even prime number), you can skip all even m:
 
 ## Implementation of Sieve of Eratosthenes in Java
  ```private static final int LIMIT = 121;
